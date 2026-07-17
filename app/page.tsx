@@ -1,29 +1,30 @@
 import ContactForm from "@/components/ContactForm";
+import Icon from "@/components/Icon";
 import { site } from "@/lib/site";
 
 const programs = [
-  { ic: "🏋️", t: "Strength Training", d: "Area free weight lengkap: rack, barbell, dumbbell sampai 50kg." },
-  { ic: "🔥", t: "HIIT Class", d: "Kelas intensitas tinggi 45 menit, bakar kalori maksimal." },
-  { ic: "🥊", t: "Boxing & Muay Thai", d: "Kelas striking bersama pelatih bersertifikat nasional." },
-  { ic: "🧘", t: "Yoga & Mobility", d: "Recovery, fleksibilitas, dan keseimbangan untuk semua level." },
-  { ic: "🎯", t: "Personal Training", d: "Program 1-on-1 custom: latihan, nutrisi, dan progress tracking." },
-  { ic: "👥", t: "Group Class", d: "20+ kelas per minggu: spinning, pump, functional, zumba." },
+  { ic: "dumbbell", t: "Strength Training", d: "Area free weight lengkap: rack, barbell, dumbbell sampai 50kg." },
+  { ic: "flame", t: "HIIT Class", d: "Kelas intensitas tinggi 45 menit, bakar kalori maksimal." },
+  { ic: "boxing", t: "Boxing & Muay Thai", d: "Kelas striking bersama pelatih bersertifikat nasional." },
+  { ic: "lotus", t: "Yoga & Mobility", d: "Recovery, fleksibilitas, dan keseimbangan untuk semua level." },
+  { ic: "target", t: "Personal Training", d: "Program 1-on-1 custom: latihan, nutrisi, dan progress tracking." },
+  { ic: "users", t: "Group Class", d: "20+ kelas per minggu: spinning, pump, functional, zumba." },
 ];
 
 const facilities = [
-  { ic: "🕕", t: "Buka 06.00–23.00", d: "Latihan pagi sebelum kerja atau malam setelah pulang." },
-  { ic: "🚿", t: "Shower & Locker", d: "Locker aman, shower bersih, handuk disediakan." },
-  { ic: "❄️", t: "Full AC & Musik", d: "Ruangan sejuk dengan sound system yang bikin semangat." },
-  { ic: "🥤", t: "Juice Bar", d: "Protein shake dan jus segar setelah latihan." },
+  { ic: "clock", t: "Buka 06.00–23.00", d: "Latihan pagi sebelum kerja atau malam setelah pulang." },
+  { ic: "shower", t: "Shower & Locker", d: "Locker aman, shower bersih, handuk disediakan." },
+  { ic: "snow", t: "Full AC & Musik", d: "Ruangan sejuk dengan sound system yang bikin semangat." },
+  { ic: "cup", t: "Juice Bar", d: "Protein shake dan jus segar setelah latihan." },
 ];
 
 const gallery = [
-  { emoji: "🏋️", bg: "from-[#2a3020] to-[#101208]" },
-  { emoji: "🤸", bg: "from-[#3a4222] to-[#181c12]" },
-  { emoji: "🥊", bg: "from-[#20260f] to-[#0d0f08]" },
-  { emoji: "🏃", bg: "from-[#333d1c] to-[#141709]" },
-  { emoji: "🧘", bg: "from-[#252c14] to-[#101208]" },
-  { emoji: "💪", bg: "from-[#404a26] to-[#181c12]" },
+  "/img/gallery-1.jpg",
+  "/img/gallery-2.jpg",
+  "/img/gallery-3.jpg",
+  "/img/gallery-4.jpg",
+  "/img/gallery-5.jpg",
+  "/img/gallery-6.jpg",
 ];
 
 const plans = [
@@ -55,9 +56,10 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden py-28">
-        <span aria-hidden className="absolute -right-16 top-6 text-[280px] opacity-[0.05]">⚡</span>
+        <img src="/img/hero.jpg" alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-body-bg via-body-bg/85 to-transparent" />
         <div className="relative mx-auto max-w-6xl px-5">
-          <Eyebrow>⚡ Gym · Group Class · Personal Training</Eyebrow>
+          <Eyebrow>Gym · Group Class · Personal Training</Eyebrow>
           <h1 className="max-w-3xl text-4xl uppercase leading-tight md:text-6xl">
             Tempa Versi <span className="text-accent">Terkuatmu</span>
           </h1>
@@ -92,7 +94,9 @@ export default function Home() {
           <div className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
             {programs.map((p) => (
               <div key={p.t} className="rounded-2xl border border-line bg-card p-7 transition-colors hover:border-accent">
-                <div className="text-3xl">{p.ic}</div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon name={p.ic} className="h-6 w-6" />
+                </div>
                 <h3 className="mt-4 text-lg font-bold uppercase text-heading">{p.t}</h3>
                 <p className="mt-2 text-sm text-muted">{p.d}</p>
               </div>
@@ -109,7 +113,9 @@ export default function Home() {
           <div className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">
             {facilities.map((f) => (
               <div key={f.t} className="rounded-2xl bg-card p-7">
-                <div className="text-3xl">{f.ic}</div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon name={f.ic} className="h-6 w-6" />
+                </div>
                 <h3 className="mt-4 font-bold text-heading">{f.t}</h3>
                 <p className="mt-2 text-sm text-muted">{f.d}</p>
               </div>
@@ -124,10 +130,8 @@ export default function Home() {
           <Eyebrow>Gallery</Eyebrow>
           <h2 className="text-3xl uppercase md:text-4xl">Suasana di Forge</h2>
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {gallery.map((g, i) => (
-              <div key={i} className={`flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br text-5xl transition-transform hover:scale-[1.03] ${g.bg}`}>
-                {g.emoji}
-              </div>
+            {gallery.map((src, i) => (
+              <img key={i} src={src} alt={`Forge Fitness ${i + 1}`} loading="lazy" className="aspect-square w-full rounded-2xl object-cover transition-transform hover:scale-[1.03]" />
             ))}
           </div>
         </div>
